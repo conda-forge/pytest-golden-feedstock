@@ -6,22 +6,22 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pytest-golden-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/pytest-golden-{{ version }}.tar.gz
   sha256: 54e6f317a533758e6dcc96e6ef9457c610ae1c9db53575686a303f3ef7ad1e35
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python >=3.7,<4.0
+    - python {{ python_min }}
     - poetry >=0.12
     - poetry-core
     - pip
   run:
-    - python >=3.6.0,<4.0.0
+    - python >={{ python_min }},<4.0.0
     - pytest >=6.1.2
     - ruamel.yaml >=0.16.12,<1.0
     - atomicwrites >=1.4.0,<2.0.0
@@ -35,6 +35,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/oprypin/pytest-golden
