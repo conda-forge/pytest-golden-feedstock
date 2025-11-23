@@ -1,18 +1,21 @@
-{% set name = "pytest-golden" %}
-{% set version = "0.2.2" %}
+schema_version: 1
+
+context:
+  name: pytest-golden
+  version: 0.2.2
 
 package:
-  name: {{ name|lower }}
-  version: {{ version }}
+  name: ${{ name|lower }}
+  version: ${{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/pytest-golden-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/pytest-golden-${{ version }}.tar.gz
   sha256: 54e6f317a533758e6dcc96e6ef9457c610ae1c9db53575686a303f3ef7ad1e35
 
 build:
+  number: 3
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 2
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
@@ -28,19 +31,18 @@ requirements:
     - dataclasses >=0.7,<1.0
     - testfixtures >=6.15.0,<7.0.0
 
-test:
-  imports:
-    - pytest_golden
-  commands:
-    - pip check
-  requires:
-    - pip
+tests:
+  - python:
+      imports:
+        - pytest_golden
+      pip_check: true
 
+      python_version: ${{ python_min }}.*
 about:
-  home: https://github.com/oprypin/pytest-golden
   summary: Plugin for pytest that offloads expected outputs to data files
   license: MIT
   license_file: LICENSE.md
+  homepage: https://github.com/oprypin/pytest-golden
 
 extra:
   recipe-maintainers:
