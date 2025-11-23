@@ -4,7 +4,7 @@ schema_version: 1
 
 context:
   name: pytest-golden
-  version: "0.2.2"
+  version: "1.0.0"
   python_min: '3.9'
 
 package:
@@ -12,11 +12,11 @@ package:
   version: ${{ version }}
 
 source:
-  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/pytest-golden-${{ version }}.tar.gz
-  sha256: 54e6f317a533758e6dcc96e6ef9457c610ae1c9db53575686a303f3ef7ad1e35
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name | replace('-', '_') }}-${{ version }}.tar.gz
+  sha256: bfc9ce41f4dd9527d30f5e6db30b6d5c9f5f7360e2c11fb7b603376ef9535e32
 
 build:
-  number: 2
+  number: 0
   noarch: python
   script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
