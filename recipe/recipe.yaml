@@ -23,16 +23,13 @@ build:
 requirements:
   host:
     - python ${{ python_min }}.*
-    - poetry >=0.12
-    - poetry-core
+    - hatchling
     - pip
   run:
     - python >=${{ python_min }}
     - pytest >=6.1.2
     - ruamel.yaml >=0.16.12,<1.0
-    - atomicwrites >=1.4.0,<2.0.0
-    - dataclasses >=0.7,<1.0
-    - testfixtures >=6.15.0,<7.0.0
+    - testfixtures >=6.15.0
 
 tests:
   - python:
