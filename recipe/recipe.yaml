@@ -4,7 +4,7 @@ schema_version: 1
 
 context:
   name: pytest-golden
-  version: "1.0.0"
+  version: "1.0.1"
   python_min: '3.9'
 
 package:
@@ -13,7 +13,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name | replace('-', '_') }}-${{ version }}.tar.gz
-  sha256: bfc9ce41f4dd9527d30f5e6db30b6d5c9f5f7360e2c11fb7b603376ef9535e32
+  sha256: 968d01ab05d330fa10b310545fe8fd9aeb75d3a5b9a513fdbe91b89230b68938
 
 build:
   number: 0
